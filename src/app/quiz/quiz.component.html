@@ -1,0 +1,31 @@
+<div *ngIf="currentQuestion == null">
+     <button (click)="newGame()" mat-raised-button color="primary">Nouvelle Partie</button>
+</div>
+<div *ngIf="currentQuestion != null">
+    <div *ngIf="answer == null">
+        <mat-card class="question">
+            <mat-card-header>
+                <mat-card-title>Question {{iQuestion}}</mat-card-title>
+                <mat-card-subtitle>{{currentQuestion}}</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+                <p>Une proposition !</p>
+            </mat-card-content>
+        </mat-card>
+    </div>
+    <div *ngIf="answer != null">
+        <div *ngIf="found === true">
+            <p>Bien joué !</p>
+        </div>
+        <div *ngIf="found === false">
+                <p>Dommage !</p>
+            </div>
+            <p>La réponse était : {{answer}}</p>
+            <div *ngIf="hasNext">
+                <button (click)="loadNextQuestion()" mat-raised-button color="primary">Prochaine question</button>
+            </div>
+            <div *ngIf="hasNext == false">
+                <button mat-raised-button color="primary">Voir mon score</button>
+            </div>
+        </div>
+</div>
